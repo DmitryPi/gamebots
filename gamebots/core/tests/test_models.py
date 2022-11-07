@@ -29,6 +29,11 @@ class TestProduct(TestCase):
     def test_fields(self):
         for obj in self.objects:
             assert obj.uuid
+            assert obj.title
+            assert obj.slug
+            assert obj.description
+            assert isinstance(obj.price, float)
+            assert isinstance(obj.currency, str)
 
 
 class TestOrder(TestCase):
@@ -55,5 +60,8 @@ class TestOrder(TestCase):
 
     def test_fields(self):
         for obj in self.objects:
-            assert obj.uuid
             assert obj.user.username
+            assert obj.product.slug
+            assert obj.uuid
+            assert isinstance(obj.quantity, int)
+            assert obj.status

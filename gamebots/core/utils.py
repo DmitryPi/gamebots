@@ -5,6 +5,8 @@ from transliterate import translit
 
 
 def get_unique_slug(cls, title: str) -> str:
+    """If title in ru unicode - it will transliterate,
+    otherwise it continues as it is."""
     title = translit(title, "ru", reversed=True)  # fix ru unicode titles
     slug = slugify(title)
     unique_slug = slug
@@ -16,10 +18,12 @@ def get_unique_slug(cls, title: str) -> str:
 
 
 def capitalize_str(s: str) -> str:
+    """Capitalize string words"""
     return " ".join([w.capitalize() for w in s.split(" ")]).strip()
 
 
 def capitalize_slug(slug: str) -> str:
+    """Turn slug into sentence and capitalize words"""
     return re.sub(
         r"\d", "", " ".join([w.capitalize() for w in slug.split("-")])
     ).strip()
