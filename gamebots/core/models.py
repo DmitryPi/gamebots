@@ -15,7 +15,8 @@ class Product(TimeStampedModel):
 
     # fields
     uuid = models.UUIDField(db_index=True, default=uuid_lib.uuid4, editable=False)
-    title = models.CharField(_("Title"), max_length=255)
+    title = models.CharField(_("Title"), max_length=55)
+    slug = models.CharField(_("Slug"), max_length=55, default="")
     description = models.TextField(_("Description"), blank=True, default="")
     price = models.FloatField(_("Price"), default=0.0)
     currency = models.CharField(
