@@ -1,3 +1,13 @@
-from django.contrib import admin  # noqa skip
+from django.contrib import admin
 
-# Register your models here.
+from .models import Order, Product
+
+
+@admin.register(Product)
+class ProductAdmin(admin.ModelAdmin):
+    pass
+
+
+@admin.register(Order)
+class OrderAdmin(admin.ModelAdmin):
+    pass
