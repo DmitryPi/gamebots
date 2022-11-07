@@ -80,7 +80,8 @@ THIRD_PARTY_APPS = [
 
 LOCAL_APPS = [
     "gamebots.users",
-    # Your stuff: custom apps go here
+    "gamebots.core",
+    "gamebots.bots",
 ]
 # https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
