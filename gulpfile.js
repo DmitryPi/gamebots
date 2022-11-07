@@ -99,13 +99,13 @@ function imgCompression() {
     .pipe(dest(paths.images))
 }
 // Run django server
-function runServer(cb) {
-  const cmd = spawn('python', ['manage.py', 'runserver'], {stdio: 'inherit'})
-  cmd.on('close', function(code) {
-    console.log('runServer exited with code ' + code)
-    cb(code)
-  })
-}
+// function runServer(cb) {
+//   const cmd = spawn('python', ['manage.py', 'runserver'], {stdio: 'inherit'})
+//   cmd.on('close', function(code) {
+//     console.log('runServer exited with code ' + code)
+//     cb(code)
+//   })
+// }
 
 // Browser sync server for live reload
 function initBrowserSync() {
@@ -120,7 +120,7 @@ function initBrowserSync() {
       open: false,
       // https://www.browsersync.io/docs/options/#option-proxy
       proxy:  {
-        target: 'django:8000',
+        target: '127.0.0.1:8000',
         proxyReq: [
           function(proxyReq, req) {
             // Assign proxy "host" header same as current request at Browsersync server
