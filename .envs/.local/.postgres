@@ -1,0 +1,7 @@
+# PostgreSQL
+# ------------------------------------------------------------------------------
+POSTGRES_HOST=postgres
+POSTGRES_PORT=5432
+POSTGRES_DB=gamebots
+POSTGRES_USER=zqhTnwsBrAiqdKjsiqaaTwSJlrxxVKUc
+POSTGRES_PASSWORD=UWwGz4b7BaB3m8Nyq2BAWp4i19HPmZPDCbqstDjWB7yJzqjns2JosU7f9NH9EQ75
