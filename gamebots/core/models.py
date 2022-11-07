@@ -3,6 +3,7 @@ import uuid as uuid_lib
 from django.conf import settings
 from django.db import models
 from django.utils.translation import gettext_lazy as _
+from model_utils import FieldTracker
 from model_utils.models import TimeStampedModel
 
 from gamebots.core.utils import get_unique_slug
@@ -27,6 +28,7 @@ class Product(TimeStampedModel):
     image = models.ImageField(
         _("Poster"), blank=True, default="", upload_to="products/"
     )
+    tracker = FieldTracker(fields=["title"])
 
     class Meta:
         verbose_name = _("Product")
