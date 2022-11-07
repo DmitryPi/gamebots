@@ -27,7 +27,6 @@ function pathsConfig(appName) {
   const vendorsRoot = 'node_modules'
 
   return {
-    bootstrapSass: `${vendorsRoot}/bootstrap/scss`,
     vendorsJs: [
       `${vendorsRoot}/@popperjs/core/dist/umd/popper.js`,
       `${vendorsRoot}/bootstrap/dist/js/bootstrap.js`,
@@ -59,10 +58,9 @@ function styles() {
       cssnano({ preset: 'default' })   // minify result
   ]
 
-  return src(`${paths.sass}/project.scss`)
+  return src(`${paths.sass}/project.sass`)
     .pipe(sass({
       includePaths: [
-        paths.bootstrapSass,
         paths.sass
       ]
     }).on('error', sass.logError))
@@ -136,7 +134,7 @@ function initBrowserSync() {
 
 // Watch
 function watchPaths() {
-  watch(`${paths.sass}/*.scss`, styles)
+  watch(`${paths.sass}/*.sass`, styles)
   watch(`${paths.templates}/**/*.html`).on("change", reload)
   watch([`${paths.js}/*.js`, `!${paths.js}/*.min.js`], scripts).on("change", reload)
 }
