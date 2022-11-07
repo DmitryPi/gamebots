@@ -8,12 +8,13 @@ from gamebots.core.utils import get_unique_slug
 class Bot(models.Model):
     title = models.CharField(_("Title"), max_length=55)
     title_sm = models.CharField(_("Title short"), max_length=10, blank=True)
+    description = models.TextField(_("Description"), blank=True, default="")
     slug = models.SlugField(_("Slug"), unique=True, max_length=55)
     tracker = FieldTracker(fields=["title"])
 
     class Meta:
-        verbose_name = _("Game")
-        verbose_name_plural = _("Games")
+        verbose_name = _("Bot")
+        verbose_name_plural = _("Bots")
 
     def __str__(self):
         return self.title
@@ -34,8 +35,8 @@ class Feature(models.Model):
     video = models.URLField(max_length=255)
 
     class Meta:
-        verbose_name = _("Game")
-        verbose_name_plural = _("Games")
+        verbose_name = _("Feature")
+        verbose_name_plural = _("Features")
 
     def __str__(self):
         return self.title

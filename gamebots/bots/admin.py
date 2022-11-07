@@ -1,4 +1,4 @@
-from django.contrib import admin  # noqa skip
+from django.contrib import admin
 
 from .models import Bot, Feature
 
