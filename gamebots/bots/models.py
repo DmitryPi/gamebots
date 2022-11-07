@@ -39,3 +39,6 @@ class Feature(models.Model):
 
     def __str__(self):
         return self.title
+
+    def save(self, *args, **kwargs):
+        return super().save(*args, **kwargs)
