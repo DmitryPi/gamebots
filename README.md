@@ -1,27 +1,20 @@
 # GameBots
 
-Behold My Awesome Project!
+> Веб-сайт по презентации и продаже игровых ботов.
 
-[![Built with Cookiecutter Django](https://img.shields.io/badge/built%20with-Cookiecutter%20Django-ff69b4.svg?logo=cookiecutter)](https://github.com/cookiecutter/cookiecutter-django/)
-[![Black code style](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/ambv/black)
+> Версия: 0.1.0
 
-License: MIT
+> License: MIT
 
-## Settings
+## Настройки `config/settings`
 
 Moved to [settings](http://cookiecutter-django.readthedocs.io/en/latest/settings.html).
 
+## Модели
+
+TODO
+
 ## Basic Commands
-
-### Setting Up Your Users
-
--   To create a **normal user account**, just go to Sign Up and fill out the form. Once you submit it, you'll see a "Verify Your E-mail Address" page. Go to your console to see a simulated email verification message. Copy the link into your browser. Now the user's email should be verified and ready to go.
-
--   To create a **superuser account**, use this command:
-
-        $ python manage.py createsuperuser
-
-For convenience, you can keep your normal user logged in on Chrome and your superuser logged in on Firefox (or similar), so that you can see how the site behaves for both kinds of users.
 
 ### Type checks
 
@@ -37,9 +30,22 @@ To run the tests, check your test coverage, and generate an HTML coverage report
     $ coverage html
     $ open htmlcov/index.html
 
-#### Running tests with pytest
+### Pytest
 
     $ pytest
+    $ pytest -s (with i/o logging)
+
+Тест отдельного модуля
+
+    $ pytest /tests/test_models.py
+
+Тест только с декоратором `@pytest.mark.slow`
+
+    $ pytest -v -m slow
+
+Инверсия предыдущей команды - исключить тесты с декоратором `@pytest.mark.slow`)
+
+    $ pytest -v -m "not slow"
 
 ### Live reloading and Sass CSS compilation
 
@@ -81,6 +87,34 @@ The following details how to deploy this application.
 ### Docker
 
 See detailed [cookiecutter-django Docker documentation](http://cookiecutter-django.readthedocs.io/en/latest/deployment-with-docker.html).
+
+#### Команды
+
+    $ docker-compose -f local.yml build
+
+    $ docker-compose -f local.yml up
+
+    $ set(export) COMPOSE_FILE=local.yml  (задать путь к докер конфигу)
+    $ docker-compose up
+    $ docker-compose up -d  (detached-daemon)
+
+#### Вызов команды внутри контейнера
+
+    $ docker-compose -f local.yml run --rm django python manage.py migrate
+    $ docker-compose -f local.yml run --rm django python manage.py createsuperuser
+    $ docker-compose -f local.yml run --rm django pip install
+
+#### Ребилд
+
+    $ docker-compose -f local.yml up --build
+
+#### Bash
+
+    $ docker-compose -f local.yml run django bash
+    $ docker-compose -f local.yml exec django bash
+    $ exit
+
+
 ### Custom Bootstrap Compilation
 
 The generated CSS is set up with automatic Bootstrap recompilation with variables of your choice.
