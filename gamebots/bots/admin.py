@@ -1,10 +1,15 @@
 from django.contrib import admin
 
-from .models import Bot, Feature
+from .models import Bot, Feature, Question
 
 
 @admin.register(Bot)
 class BotAdmin(admin.ModelAdmin):
+    pass
+
+
+@admin.register(Question)
+class QuestionAdmin(admin.ModelAdmin):
     pass
 
 

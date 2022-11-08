@@ -26,7 +26,43 @@ class Bot(TimeStampedModel):
         return super().save(*args, **kwargs)
 
 
+class Question(TimeStampedModel):
+    # choices
+    class Status(models.TextChoices):
+        draft = "draft", _("Draft")
+        published = "published", _("Published")
+
+    # relations
+    bot = models.ForeignKey(
+        Bot,
+        on_delete=models.CASCADE,
+        related_name="%(class)ss",
+        related_query_name="%(class)s",
+    )
+    # fields
+    question = models.CharField(_("Question"), max_length=255)
+    answer = models.TextField(_("Answer"), blank=True, default="")
+    status = models.CharField(
+        _("Status"), max_length=55, choices=Status.choices, default=Status.published
+    )
+
+    class Meta:
+        verbose_name = _("Question")
+        verbose_name_plural = _("Questions")
+
+    def __str__(self):
+        return self.title
+
+    def save(self, *args, **kwargs):
+        return super().save(*args, **kwargs)
+
+
 class Feature(TimeStampedModel):
+    # choices
+    class Status(models.TextChoices):
+        draft = "draft", _("Draft")
+        published = "published", _("Published")
+
     # relations
     bot = models.ForeignKey(
         Bot,
@@ -39,6 +75,9 @@ class Feature(TimeStampedModel):
     description = models.TextField(_("Description"), blank=True, default="")
     image = models.ImageField(_("Poster"), blank=True, default="", upload_to="posters/")
     video = models.URLField(max_length=255)
+    status = models.CharField(
+        _("Status"), max_length=55, choices=Status.choices, default=Status.published
+    )
 
     class Meta:
         verbose_name = _("Feature")
