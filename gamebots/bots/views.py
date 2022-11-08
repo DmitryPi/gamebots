@@ -7,11 +7,12 @@ from .models import Bot
 class BotListView(ListView):
     model = Bot
     queryset = Bot.objects.all()
-    template_name = "pages/home.html"
+    template_name = "bots/bot-list.html"
 
 
 class BotDetailView(DetailView):
     model = Bot
+    template_name = "bots/bot-detail.html"
 
     def get_object(self, *args, **kwargs):
         obj = get_object_or_404(
