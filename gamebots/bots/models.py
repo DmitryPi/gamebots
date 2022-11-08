@@ -1,11 +1,12 @@
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 from model_utils import FieldTracker
+from model_utils.models import TimeStampedModel
 
 from gamebots.core.utils import get_unique_slug
 
 
-class Bot(models.Model):
+class Bot(TimeStampedModel):
     title = models.CharField(_("Title"), max_length=55)
     title_sm = models.CharField(_("Title short"), max_length=10, blank=True)
     description = models.TextField(_("Description"), blank=True, default="")
@@ -25,9 +26,14 @@ class Bot(models.Model):
         return super().save(*args, **kwargs)
 
 
-class Feature(models.Model):
+class Feature(TimeStampedModel):
     # relations
-    bot = models.ForeignKey(Bot, on_delete=models.CASCADE)
+    bot = models.ForeignKey(
+        Bot,
+        on_delete=models.CASCADE,
+        related_name="%(class)ss",
+        related_query_name="%(class)s",
+    )
     # fields
     title = models.CharField(_("Title"), max_length=100)
     description = models.TextField(_("Description"), blank=True, default="")
