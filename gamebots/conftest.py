@@ -29,3 +29,18 @@ def feature(db) -> Feature:
 @pytest.fixture
 def question(db) -> Question:
     return QuestionFactory()
+
+
+@pytest.fixture
+def bot_ten(db) -> list[Bot]:
+    return BotFactory.create_batch(size=10)
+
+
+@pytest.fixture
+def feature_ten(db) -> list[Feature]:
+    return FeatureFactory.create_batch(size=10)
+
+
+@pytest.fixture
+def question_ten(db) -> list[Question]:
+    return QuestionFactory.create_batch(size=10)
