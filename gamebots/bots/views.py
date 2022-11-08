@@ -7,6 +7,7 @@ from .models import Bot
 class BotListView(ListView):
     model = Bot
     template_name = "pages/home.html"
+    queryset = Bot.objects.all()
 
 
 class BotDetailView(DetailView):
