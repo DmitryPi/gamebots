@@ -1,8 +1,10 @@
+import re
+
 import pytest
-from transliterate import translit
+from transliterate import translit  # noqa skip
 
 from ..models import Product
-from ..utils import capitalize_slug, capitalize_str
+from ..utils import capitalize_slug, capitalize_str, get_unique_licensekey
 from .factories import model_slug_test_generator
 
 
@@ -37,3 +39,15 @@ def test_capitalize_slug() -> None:
     for s, result in test_slugs:
         func_res = capitalize_slug(s)
         assert func_res == result
+
+
+def test_get_unique_licensekey() -> None:
+    examples = [
+        [get_unique_licensekey(4), 4],
+        [get_unique_licensekey(16), 16],
+        [get_unique_licensekey(), 24],
+    ]
+    for example in examples:
+        func_res, res = example
+        assert len(re.match(r"^\d+$", func_res)[0]) == res
+        assert isinstance(func_res, str)

@@ -1,7 +1,7 @@
 from django.test import TestCase
 
-from ..models import Order, Product
-from .factories import OrderFactory, ProductFactory
+from ..models import LicenseKey, Order, Product
+from .factories import LicenseKeyFactory, OrderFactory, ProductFactory
 
 
 class TestProduct(TestCase):
@@ -64,4 +64,27 @@ class TestOrder(TestCase):
             assert obj.product.slug
             assert obj.uuid
             assert isinstance(obj.quantity, int)
+            assert obj.status
+
+
+class TestLicenseKey(TestCase):
+    def setUp(self):
+        self.batch_size = 10
+        self.objects = LicenseKeyFactory.create_batch(size=self.batch_size)
+
+    def test_create(self):
+        assert len(self.objects) == self.batch_size
+
+    def test_update(self):
+        pass
+
+    def test_delete(self):
+        for obj in self.objects:
+            obj.delete()
+        qs = LicenseKey.objects.all()
+        assert not len(qs)
+
+    def test_fields(self):
+        for obj in self.objects:
+            assert len(obj.key) == 24
             assert obj.status

@@ -5,7 +5,7 @@ from factory.fuzzy import FuzzyFloat
 
 from gamebots.users.tests.factories import UserFactory
 
-from ..models import Order, Product
+from ..models import LicenseKey, Order, Product
 from ..utils import get_unique_slug
 
 
@@ -37,3 +37,10 @@ class OrderFactory(DjangoModelFactory):
 
     class Meta:
         model = Order
+
+
+class LicenseKeyFactory(DjangoModelFactory):
+    status = LicenseKey.Status.INACTIVE
+
+    class Meta:
+        model = LicenseKey

@@ -1,4 +1,6 @@
+import random
 import re
+import string
 
 from django.utils.text import slugify
 from transliterate import translit
@@ -27,3 +29,9 @@ def capitalize_slug(slug: str) -> str:
     return re.sub(
         r"\d", "", " ".join([w.capitalize() for w in slug.split("-")])
     ).strip()
+
+
+def get_unique_licensekey(n=24) -> str:
+    """Generate random integer-based licensekey"""
+    res = "".join(random.choices(string.digits, k=n))
+    return res

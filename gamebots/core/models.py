@@ -6,7 +6,7 @@ from django.utils.translation import gettext_lazy as _
 from model_utils import FieldTracker
 from model_utils.models import TimeStampedModel
 
-from gamebots.core.utils import get_unique_slug
+from gamebots.core.utils import get_unique_licensekey, get_unique_slug
 
 
 class Product(TimeStampedModel):
@@ -71,7 +71,7 @@ class Order(TimeStampedModel):
 class LicenseKey(TimeStampedModel):
     # choices
     class Status(models.TextChoices):
-        INACTIVE = "INACTIVE", _("InActive")
+        INACTIVE = "INACTIVE", _("Inactive")
         ACTIVE = "ACTIVE", _("Active")
 
     # fields
@@ -86,3 +86,8 @@ class LicenseKey(TimeStampedModel):
 
     def __str__(self):
         return f"{self.key}"
+
+    def save(self, *args, **kwargs):
+        if not self.key:
+            self.key = get_unique_licensekey()
+        return super().save(*args, **kwargs)
