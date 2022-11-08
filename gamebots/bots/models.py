@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse
 from django.utils.translation import gettext_lazy as _
 from model_utils import FieldTracker
 from model_utils.models import TimeStampedModel
@@ -19,6 +20,9 @@ class Bot(TimeStampedModel):
 
     def __str__(self):
         return self.title
+
+    def get_absolute_url(self):
+        return reverse("bots:bot", kwargs={"bot_slug": self.slug})
 
     def save(self, *args, **kwargs):
         if not self.slug or self.title != self.tracker.previous("title"):
