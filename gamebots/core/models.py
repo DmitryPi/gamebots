@@ -66,3 +66,23 @@ class Order(TimeStampedModel):
 
     def __str__(self):
         return f"{self.uuid}"
+
+
+class LicenseKey(TimeStampedModel):
+    # choices
+    class Status(models.TextChoices):
+        INACTIVE = "INACTIVE", _("InActive")
+        ACTIVE = "ACTIVE", _("Active")
+
+    # fields
+    key = models.CharField(_("Key"), unique=True, max_length=55)
+    status = models.CharField(
+        max_length=55, choices=Status.choices, default=Status.INACTIVE
+    )
+
+    class Meta:
+        verbose_name = _("LicenseKey")
+        verbose_name_plural = _("LicenseKeys")
+
+    def __str__(self):
+        return f"{self.key}"
