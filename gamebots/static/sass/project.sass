@@ -1,3 +1,5 @@
+@import "fonts"
+
 // project specific CSS goes here
 ////////////////////////////////
  //Variables//
@@ -25,3 +27,63 @@ $red: #b94a48
   background-color: $pink
   border-color: $dark-pink
   color: $red
+
+.hidden
+  display: none
+
+
+////////////////////////////////
+    //Buttons//
+////////////////////////////////
+
+.btn-md
+  cursor: pointer
+  background-color: transparent
+  border: none
+  width: 125px
+  height: 45px
+  color: #BCBCBC
+  font-family: 'poppins'
+  font-style: normal
+  font-weight: 500
+  font-size: 1rem
+  &.btn-bd
+    border: 1px solid #D7D7D7
+    border-radius: 10px
+
+////////////////////////////////
+    //Main//
+////////////////////////////////
+
+body
+  color: white
+  background: #252954
+  margin: 0 auto
+  padding: 0 80px
+  position: relative
+  min-height: 220vh
+  max-width: 1200px
+  overflow-y: auto
+  overflow-x: hidden
+  background-color: #1F1D2B
+  &::before
+    content: ""
+    position: absolute
+    width: 123px
+    height: 123px
+    left: 50%
+    top: 138px
+    filter: blur(90px)
+    background-color: #FB37FF
+  &::after
+    content: ""
+    position: absolute
+    width: 123px
+    height: 123px
+    left: 80%
+    top: 550px
+    background-color: #18B2DE
+    filter: blur(80px)
+
+
+@import "media"
