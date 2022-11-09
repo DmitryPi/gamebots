@@ -13,13 +13,4 @@ class BotListView(ListView):
 class BotDetailView(DetailView):
     model = Bot
     template_name = "bots/bot-detail.html"
-
-    def get_object(self, *args, **kwargs):
-        obj = get_object_or_404(
-            Bot.objects.prefetch_related(), slug=self.slug_url_kwarg
-        )
-        return obj
-
-    def get_context_data(self, *args, **kwargs):
-        context = super().get_context_data(*args, **kwargs)
-        return context
+    slug_url_kwarg = "bot_slug"

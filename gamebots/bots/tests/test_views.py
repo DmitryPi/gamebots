@@ -29,3 +29,12 @@ class TestBotListView:
         assert len(response.context["bot_list"]) == 10
         for i in response.context["bot_list"]:
             assert isinstance(i, Bot)
+
+
+class TestBotDetailView:
+    def test_response(self, user: User, bot: BotFactory, client: Client):
+        rev = reverse("bots:bot-detail", kwargs={"bot_slug": bot.slug})
+        response = client.get(rev)
+        assert response.status_code == 200
+        assert response.charset == "utf-8"
+        assert response.context["bot"].title
