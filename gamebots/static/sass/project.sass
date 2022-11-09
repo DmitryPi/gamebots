@@ -15,8 +15,6 @@ $red: #b94a48
 ////////////////////////////////
     //Alerts//
 ////////////////////////////////
-// bootstrap alert CSS, translated to the django-standard levels of
-// debug, info, success, warning, error
 
 .alert-debug
   background-color: $white
@@ -28,9 +26,21 @@ $red: #b94a48
   border-color: $dark-pink
   color: $red
 
+////////////////////////////////
+    //Defaults//
+////////////////////////////////
+
+a
+  text-decoration: none!important
+
+li, a, button, .btn, ::placeholder
+  transition: all .3s ease-in-out
+
 .hidden
   display: none
 
+.mb-0
+  margin-bottom: 0
 
 ////////////////////////////////
     //Buttons//
@@ -48,14 +58,12 @@ $red: #b94a48
   font-size: 1rem
   &:hover
     color: darken(#BCBCBC, 15%)
-    transition: all .3s ease-in-out
   &.btn-bd
     border: 1px solid #D7D7D7
     border-radius: 10px
 
 a.btn-md
-  padding: 0.7rem 2rem
-  text-decoration: none!important
+  padding: 0.6rem 1.8rem
 
 ////////////////////////////////
     //Main//
@@ -66,7 +74,6 @@ body
   margin: 0 auto
   padding: 0 80px
   position: relative
-  min-height: 100vh
   max-width: 1600px
   overflow-y: auto
   overflow-x: hidden
@@ -123,6 +130,8 @@ body
       font-weight: 500
       font-size: 1rem
       color: #BCBCBC
+      &:hover
+        color: darken(#BCBCBC, 15%)
       &:not(:last-child)
         margin-right: 2rem
       &.active
@@ -130,6 +139,60 @@ body
         border-bottom: 1.5px solid #9B51E0
         -webkit-background-clip: text
         -webkit-text-fill-color: transparent
+
+////////////////////////////////
+    //Footer//
+////////////////////////////////
+
+main
+  min-height: calc(100vh - 420px)
+
+.footer
+  margin-top: 100px
+  min-height: 200px
+  &__top
+    display: flex
+    justify-content: space-between
+    margin-bottom: 30px
+    span
+      max-width: 20%
+      font-family: 'poppins'
+      font-style: normal
+      font-weight: 500
+      font-size: 30px
+      line-height: 40px
+      color: #FFFFFF
+    .nav
+      display: flex
+      .navlink
+        margin-left: 60px
+        h5
+          margin-bottom: 1rem
+          font-family: 'poppins'
+          font-style: normal
+          font-weight: 400
+          font-size: 20px
+          line-height: 30px
+          color: #FFFFFF
+        a
+          display: block
+          font-family: 'poppins'
+          font-style: normal
+          font-weight: 400
+          font-size: .8rem
+          line-height: 1rem
+          letter-spacing: 0.03em
+          margin-bottom: 0.8rem
+          color: #D7D7D7
+  &__bottom
+    font-family: 'poppins'
+    font-style: normal
+    font-weight: 400
+    font-size: 1rem
+    line-height: 36px
+    color: #828282
+    border-top: 1px solid #f2f2f2
+    text-align: right
 
 // Media
 @import "media"

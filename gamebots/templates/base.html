@@ -44,8 +44,6 @@
       <div class="header__navwrap">
         <a class="navlink active" href="{% url 'bots:bot-list' %}">Home</a>
         <a class="navlink" href="{% url 'about' %}">About</a>
-        <a class="navlink">Activity</a>
-        <a class="navlink">How It Works</a>
       </div>
       <div class="header__auth">
         {% if request.user.is_authenticated %}
@@ -75,7 +73,7 @@
       </div>
     </header>
 
-    <div class="container">
+    <main class="container">
 
       {% if messages %}
         {% for message in messages %}
@@ -90,8 +88,39 @@
         <p>Use this document as a way to quick start any new project.</p>
       {% endblock content %}
 
-    </div> <!-- /container -->
+    </main> <!-- /container -->
 
+    <footer class="footer">
+
+      <div class="footer__top">
+        <span>
+          Etiam et id tincidunt faucibus mollis a sociis .
+        </span>
+        <div class="nav">
+          <div class="navlink">
+            <h5>Pages</h5>
+            <a>About Us</a>
+            <a>Services</a>
+          </div>
+          <div class="navlink">
+            <h5>Bots</h5>
+            <a>About Us</a>
+            <a>Services</a>
+            <a>Portfolio</a>
+          </div>
+          <div class="navlink">
+            <h5>Contact</h5>
+            <a>Facebook</a>
+            <a>Instagram</a>
+            <a>Twitter</a>
+            <a>Email</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <p class="mb-0">Copyright {% now "Y" %} Gamebots</p>
+      </div>
+    </footer>
     {% block modal %}{% endblock modal %}
 
     {% block inline_javascript %}
