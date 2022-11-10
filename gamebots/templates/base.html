@@ -48,24 +48,24 @@
       <div class="header__auth">
         {% if request.user.is_authenticated %}
           {# URL provided by django-allauth/account/urls.py #}
-          <a class="btn-md btn-bd" href="{% url 'users:detail' request.user.username  %}">
+          <a class="btn-lg btn-bd rad-10" href="{% url 'users:detail' request.user.username  %}">
             <!-- {% translate "My Profile" %} -->
             My Profile
           </a>
           {# URL provided by django-allauth/account/urls.py #}
-          <a class="btn-md " href="{% url 'account_logout' %}">
+          <a class="btn-lg " href="{% url 'account_logout' %}">
             <!-- {% translate "Sign Out" %} -->
             Sign Out
           </a>
         {% else %}
           {% if ACCOUNT_ALLOW_REGISTRATION %}
-          <a id="sign-up-link" class="btn-md btn-bd" href="{% url 'account_signup' %}">
+          <a id="sign-up-link" class="btn-lg btn-bd rad-10" href="{% url 'account_signup' %}">
             <!-- {% translate "Sign Up" %} -->
             Sign Up
           </a>
         {% endif %}
           {# URL provided by django-allauth/account/urls.py #}
-          <a id="log-in-link" class="btn-md" href="{% url 'account_login' %}">
+          <a id="log-in-link" class="btn-lg" href="{% url 'account_login' %}">
             <!-- {% translate "Sign In" %} -->
             Sign In
           </a>
@@ -85,8 +85,20 @@
       {% endif %}
 
       {% block content %}
-        <section>
-          <p>Use this document as a way to quick start any new project.</p>
+        <section class="presentation">
+          <div class="presentation__infobox">
+            <div>
+              <h1 class="presentation__infobox--boldtext">Some kind of title.</h1>
+              <p class="presentation__infobox--slimtext">In aenean posuere lorem risus nec. Tempor tincidunt aenean purus purus vestibulum nibh mi venenatis</p>
+            </div>
+            <div class="presentation__infobox__btns">
+              <button class="btn-md gradient rad-16 mr-15">Purchase</button>
+              <button class="btn-md btn-bd rad-16">Create</button>
+            </div>
+          </div>
+          <div class="presentation__display">
+            <img class="display-nft" src="https://images.unsplash.com/photo-1620641788421-7a1c342ea42e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1074&q=80" alt="unsplash-OG44d93i-NJk" border="0">
+          </div>
         </section>
       {% endblock content %}
 
