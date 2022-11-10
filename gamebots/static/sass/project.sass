@@ -1,4 +1,6 @@
 @import "fonts"
+@import "header"
+@import "footer"
 
 // project specific CSS goes here
 ////////////////////////////////
@@ -97,102 +99,6 @@ body
     background-color: #18B2DE
     filter: blur(80px)
 
-
-////////////////////////////////
-    //Header//
-////////////////////////////////
-
-.header
-  display: flex
-  align-items: center
-  justify-content: space-between
-  padding: 20px 0
-  width: 100%
-  .hamburger
-    display: none
-    color: #D7D7D7
-    background-color: #1F1D2B
-    border: none
-    margin-right: 10px
-  &__logo
-    height: 100%
-    background: linear-gradient(93.51deg, #9B51E0 2.84%, #3081ED 99.18%)
-    font-family: 'poppins'
-    font-style: normal
-    font-weight: 700
-    font-size: 32px
-    -webkit-background-clip: text
-    -webkit-text-fill-color: transparent
-  &__navwrap
-    .navlink
-      font-family: 'poppins'
-      font-style: normal
-      font-weight: 500
-      font-size: 1rem
-      color: #BCBCBC
-      &:hover
-        color: darken(#BCBCBC, 15%)
-      &:not(:last-child)
-        margin-right: 2rem
-      &.active
-        background: linear-gradient(93.51deg, #9B51E0 2.84%, #3081ED 99.18%)
-        border-bottom: 1.5px solid #9B51E0
-        -webkit-background-clip: text
-        -webkit-text-fill-color: transparent
-
-////////////////////////////////
-    //Footer//
-////////////////////////////////
-
-main
-  min-height: calc(100vh - 420px)
-
-.footer
-  margin-top: 100px
-  min-height: 200px
-  &__top
-    display: flex
-    justify-content: space-between
-    margin-bottom: 30px
-    span
-      max-width: 20%
-      font-family: 'poppins'
-      font-style: normal
-      font-weight: 500
-      font-size: 30px
-      line-height: 40px
-      color: #FFFFFF
-    .nav
-      display: flex
-      .navlink
-        margin-left: 60px
-        h5
-          margin-bottom: 1rem
-          font-family: 'poppins'
-          font-style: normal
-          font-weight: 400
-          font-size: 20px
-          line-height: 30px
-          color: #FFFFFF
-        a
-          display: block
-          font-family: 'poppins'
-          font-style: normal
-          font-weight: 400
-          font-size: .8rem
-          line-height: 1rem
-          letter-spacing: 0.03em
-          margin-bottom: 0.8rem
-          color: #D7D7D7
-  &__bottom
-    font-family: 'poppins'
-    font-style: normal
-    font-weight: 400
-    font-size: 1rem
-    line-height: 36px
-    color: #828282
-    border-top: 1px solid #f2f2f2
-    text-align: right
 
 // Media
 @import "media"

@@ -73,7 +73,7 @@
       </div>
     </header>
 
-    <main class="container">
+    <main>
 
       {% if messages %}
         {% for message in messages %}
@@ -85,7 +85,9 @@
       {% endif %}
 
       {% block content %}
-        <p>Use this document as a way to quick start any new project.</p>
+        <section>
+          <p>Use this document as a way to quick start any new project.</p>
+        </section>
       {% endblock content %}
 
     </main> <!-- /container -->
