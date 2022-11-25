@@ -22,7 +22,7 @@ class Bot(TimeStampedModel):
         return self.title
 
     def get_absolute_url(self):
-        return reverse("bots:bot", kwargs={"bot_slug": self.slug})
+        return reverse("bots:bot-detail", kwargs={"bot_slug": self.slug})
 
     def save(self, *args, **kwargs):
         if not self.slug or self.title != self.tracker.previous("title"):

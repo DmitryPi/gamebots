@@ -1,4 +1,5 @@
 from django.test import TestCase
+from django.urls import resolve
 
 from ..models import Bot, Feature, Question
 from .factories import BotFactory, FeatureFactory, QuestionFactory
@@ -31,6 +32,11 @@ class TestBot(TestCase):
             assert obj.title
             assert obj.slug
             assert obj.description
+
+    def test_get_absolute_url(self):
+        for obj in self.objects:
+            url = obj.get_absolute_url()
+            assert resolve(url).view_name == "bots:bot-detail"
 
 
 class TestFeature(TestCase):

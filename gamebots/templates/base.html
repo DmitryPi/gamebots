@@ -42,15 +42,12 @@
           </svg>
         </button>
       <div class="header__navwrap">
-        {% with url_name=request.resolver_match.url_name %}
+        {% with url_name=request.resolver_match.view_name %}
           <a
-            class="navlink {% if url_name == 'bot-list' %} active{% endif %}"
+            class="navlink {% if url_name == 'bots:bot-list' %} active{% endif %}"
             href="{% url 'bots:bot-list' %}">Home</a>
-          <a
-            class="navlink {% if url_name == 'about' %} active{% endif %}"
-            href="{% url 'about' %}">About</a>
           {% for bot in bots_qs %}
-            <a class="navlink" href="{% url 'about' %}">{{ bot.title }}</a>
+            <a class="navlink" href="{{ bot.get_absolute_url }}">{{ bot.title }}</a>
           {% endfor %}
         {% endwith %}
       </div>
@@ -167,15 +164,15 @@
         </span>
         <div class="nav">
           <div class="navlink">
+            <h5>Bots</h5>
+            {% for bot in bots_qs %}
+              <a class="" href="{{ bot.get_absolute_url }}">{{ bot.title }}</a>
+            {% endfor %}
+          </div>
+          <div class="navlink">
             <h5>Pages</h5>
             <a>About Us</a>
             <a>Services</a>
-          </div>
-          <div class="navlink">
-            <h5>Bots</h5>
-            <a>About Us</a>
-            <a>Services</a>
-            <a>Portfolio</a>
           </div>
           <div class="navlink">
             <h5>Contact</h5>
