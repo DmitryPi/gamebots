@@ -42,13 +42,9 @@
           </svg>
         </button>
       <div class="header__navwrap">
-        {% with url_name=request.resolver_match.view_name %}
-          {% for bot in bots_qs %}
-            <a
-              class="navlink {% if url_name == 'bots:bot-detail' %} active{% endif %}"
-              href="{{ bot.get_absolute_url }}">{{ bot.title }}</a>
-          {% endfor %}
-        {% endwith %}
+        {% for bot in bots_qs %}
+          <a class="navlink" href="{{ bot.get_absolute_url }}">{{ bot.title }}</a>
+        {% endfor %}
       </div>
       <div class="header__auth">
         {% if request.user.is_authenticated %}
