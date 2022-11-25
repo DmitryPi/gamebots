@@ -9,7 +9,7 @@ from gamebots.core.utils import get_unique_slug
 
 class Bot(TimeStampedModel):
     title = models.CharField(_("Title"), max_length=55)
-    title_sm = models.CharField(_("Title short"), max_length=10, blank=True)
+    subtitle = models.CharField(_("Subtitle"), max_length=200, blank=True)
     description = models.TextField(_("Description"), blank=True, default="")
     slug = models.SlugField(_("Slug"), unique=True, max_length=55, blank=True)
     poster = models.ImageField(
