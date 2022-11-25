@@ -2,9 +2,22 @@
 
 {% block content %}
 
-  {% if bot.poster %}
+  <div class="presentaion">
+    <video class="presentaion__video" autoplay muted loop>
+      <source src="http://www.georgewpark.com/video/blurred-street.mp4" type="video/mp4" />
+      <source src="http://www.georgewpark.com/video/blurred-street.webm" type="video/webm" />
+    </video>
+    <div class="presentaion__overlay">
+      <h1 class="presentaion__overlay--title">{{ bot.title }}</h1>
+      <p class="presentaion__overlay--divider">-</p>
+      <h2 class="presentaion__overlay--subtitle">{{ bot.subtitle }}</h2>
+      <p class="presentaion__overlay--description">{{ bot.description }}</p>
+    </div>
+  </div>
+
+<!--   {% if bot.poster %}
     <img src="{{ bot.poster.url }}" alt="{{ bot.title }}">
-  {% endif %}
-  <h1>{{ bot.title }}</h1>
+  {% endif %} -->
+
 
 {% endblock content %}

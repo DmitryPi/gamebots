@@ -31,6 +31,10 @@ $red: #b94a48
 ////////////////////////////////
     //Defaults//
 ////////////////////////////////
+:root
+  --fullGrid: 1 / 1 / -1 / -1
+  --videoHeight: 50vh
+
 
 a
   text-decoration: none!important
@@ -90,6 +94,12 @@ li, a, button, .btn, ::placeholder
   border-radius: 16px
 
 
+// Grid
+
+.container
+  max-width: 1400px
+
+
 ////////////////////////////////
     //Main//
 ////////////////////////////////
@@ -97,9 +107,7 @@ li, a, button, .btn, ::placeholder
 body
   color: white
   margin: 0 auto
-  padding: 0 80px
   position: relative
-  max-width: 1400px
   overflow-y: auto
   overflow-x: hidden
   background-color: #1F1D2B
@@ -114,6 +122,7 @@ body
     top: 138px
     filter: blur(90px)
     background-color: #FB37FF
+    z-index: -15
   &::after
     content: ""
     position: absolute
@@ -123,6 +132,7 @@ body
     top: 550px
     background-color: #18B2DE
     filter: blur(80px)
+    z-index: -15
 
 main
   width: 100%
@@ -135,7 +145,7 @@ section
     //Section Introduction//
 ////////////////////////////////
 
-.presentation
+.promo
   display: flex
   align-items: top
   justify-content: space-between
@@ -229,6 +239,51 @@ section
         font-weight: 400
         font-size: .8rem
         color: #FFFFFF
+
+.presentaion
+  display: grid
+  overflow: hidden
+  max-height: var(--videoHeight)
+  &::before
+    content: ""
+    width: 100%
+    height: var(--videoHeight)
+    position: absolute
+    opacity: .8
+    background-color: #000
+    z-index: -1
+  &__video
+    grid-area: var(--fullGrid)
+    min-width: 100%
+    min-height: 100%
+    object-fit: cover
+    z-index: -2
+    &::-webkit-media-controls
+      display: none !important
+  &__overlay
+    grid-area: var(--fullGrid)
+    /* Center content */
+    display: grid
+    grid-template-columns: 40%
+    justify-content: center
+    align-content: center
+    text-align: center
+    &--title
+      font-size: 4.5rem
+      letter-spacing: -3px
+      margin: 0
+    &--divider
+      font-size: 2rem
+      margin: 1rem 0
+      line-height: 0
+    &--subtitle
+      font-size: 2rem
+      font-weight: normal
+      letter-spacing: -1px
+      padding-bottom: 30px
+    &--description
+      font-size: .85rem
+      font-weight: 100
 
 
 
