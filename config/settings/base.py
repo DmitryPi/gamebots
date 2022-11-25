@@ -186,6 +186,7 @@ TEMPLATES = [
                 "django.template.context_processors.tz",
                 "django.contrib.messages.context_processors.messages",
                 "gamebots.users.context_processors.allauth_settings",
+                "gamebots.bots.context_processors.bots",
             ],
         },
     }

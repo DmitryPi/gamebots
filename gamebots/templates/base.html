@@ -42,8 +42,17 @@
           </svg>
         </button>
       <div class="header__navwrap">
-        <a class="navlink active" href="{% url 'bots:bot-list' %}">Home</a>
-        <a class="navlink" href="{% url 'about' %}">About</a>
+        {% with url_name=request.resolver_match.url_name %}
+          <a
+            class="navlink {% if url_name == 'bot-list' %} active{% endif %}"
+            href="{% url 'bots:bot-list' %}">Home</a>
+          <a
+            class="navlink {% if url_name == 'about' %} active{% endif %}"
+            href="{% url 'about' %}">About</a>
+          {% for bot in bots_qs %}
+            <a class="navlink" href="{% url 'about' %}">{{ bot.title }}</a>
+          {% endfor %}
+        {% endwith %}
       </div>
       <div class="header__auth">
         {% if request.user.is_authenticated %}
