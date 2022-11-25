@@ -2,6 +2,9 @@
 
 {% block content %}
 
-  <h1>{{bot.title}}</h1>
+  {% if bot.poster %}
+    <img src="{{ bot.poster.url }}" alt="{{ bot.title }}">
+  {% endif %}
+  <h1>{{ bot.title }}</h1>
 
 {% endblock content %}
