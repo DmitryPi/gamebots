@@ -11,7 +11,10 @@ class Bot(TimeStampedModel):
     title = models.CharField(_("Title"), max_length=55)
     title_sm = models.CharField(_("Title short"), max_length=10, blank=True)
     description = models.TextField(_("Description"), blank=True, default="")
-    slug = models.SlugField(_("Slug"), unique=True, max_length=55)
+    slug = models.SlugField(_("Slug"), unique=True, max_length=55, blank=True)
+    poster = models.ImageField(
+        _("Poster"), blank=True, default="", upload_to="posters/"
+    )
     tracker = FieldTracker(fields=["title"])
 
     class Meta:
